@@ -12,7 +12,7 @@ const navigationItems = Object.keys(pageFiles)
             .replace(/^\.\.\/pages\//, "")
             .replace(/\.(astro|md|mdx)$/, "");
 
-        if (!pagePath) return null;
+        if (!pagePath || pagePath === "404") return null;
 
         const routePath = pagePath.replace(/\/index$/, "");
         const isHomePage = routePath === "index";
