@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Prompt from "../components/Prompt.astro";
+import Document from "../components/Document.astro";
+---
+
+<Layout title="Contact - n1clude">
+    <Prompt blinking_cursor>cat contact.md</Prompt>
+    <Document>
+        <h1>Contact</h1>
+        <p>
+            If you have any questions regarding my activities, feel free to
+            contact me in any of the following ways:
+        </p>
+        <p>
+            Email: <a href="mailto:noneclude@gmail.com">noneclude@gmail.com</a>
+            <br />
+            Telegram: <a href="https://t.me/n1clude">@n1clude</a>
+            <br />
+            Discord: <a href="https://discord.com/">n1clude</a>
+        </p>
+    </Document>
+</Layout>
+
+<style>
+    a {
+        color: var(--text-color);
+        text-decoration: none;
+
+        transition: color var(--button-transition-speed) linear;
+        transition: background-color var(--button-transition-speed) linear;
+    }
+
+    a:hover {
+        color: var(--background-color);
+        background-color: var(--text-color);
+    }
+</style>

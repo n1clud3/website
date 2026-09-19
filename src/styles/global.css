@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Slab:wght@100..900&display=swap');
+
+:root {
+    --background-color: #fff;
+    --background-backdrop: #f0f0f0;
+    --text-color: #020202;
+    --text-color-secondary: #3f3f3f;
+
+    --content-width: 45rem;
+    --button-transition-speed: 10ms;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1e1e1e;
+        --background-backdrop: #202020;
+        --text-color: #efefef;
+        --text-color-secondary: #999999;
+    }
+}

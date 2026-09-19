@@ -1,0 +1,41 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+    title?: string;
+}
+const { title = "n1clude" } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+
+        padding: 8px;
+        margin: auto;
+        /* width: var(--content-width); */
+        max-width: var(--content-width);
+    }
+</style>

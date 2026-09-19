@@ -1,0 +1,37 @@
+---
+interface Props {
+    blinking_cursor?: boolean;
+}
+const { blinking_cursor = false } = Astro.props;
+---
+
+<code>
+    viewer@niclude.xyz:~$&nbsp;<slot />&nbsp;
+    {blinking_cursor && <span class="cursor" />}
+</code>
+
+<style>
+    code {
+        display: block;
+        font-family: "Cascadia Mono", monospace;
+        font-size: x-small;
+        border: 1px solid var(--background-backdrop);
+        color: var(--text-color-secondary);
+        padding: 4px;
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 0.6em; /* Matches approximate character width */
+        height: 1.1em; /* Matches line height / font height */
+        background-color: currentColor; /* Matches text color automatically */
+        vertical-align: middle;
+        animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+        to {
+            visibility: hidden;
+        }
+    }
+</style>

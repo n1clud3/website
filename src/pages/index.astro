@@ -1,17 +1,31 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Prompt from "../components/Prompt.astro";
+import Document from "../components/Document.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+	<Prompt>cat about.md</Prompt>
+	<Document>
+		<h1>Introductions</h1>
+		<p>Greetings! Привіт! Ahoj!</p>
+		<p>
+			My name is Mykola. On the internet I am known as <i>n1clude</i>. I
+			am a software engineer. I was born in a beautiful country of
+			Ukraine. Currently fighting for a bachelor degree at FIIT STU in
+			Slovakia.
+		</p>
+		<h2>About niclude.xyz</h2>
+		<p>
+			This website is a work in progress. It is used for showing off my
+			projects, cute photos and my thoughts about my life and the
+			troubling world we live in.
+		</p>
+	</Document>
+</Layout>
+
+<style>
+	p {
+		text-align: justify;
+	}
+</style>
