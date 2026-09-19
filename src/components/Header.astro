@@ -1,29 +1,51 @@
 ---
+import DHBar from "./DashedHorizontalBar.astro";
 
+const pageFiles = import.meta.glob("../pages/*.{astro,md,mdx}", {
+    eager: true,
+});
+const baseUrl = import.meta.env.BASE_URL;
+const navigationItems = Object.keys(pageFiles)
+    .map((filePath) => {
+        const fileName = filePath.match(/\/([^/]+)\.(astro|md|mdx)$/)?.[1];
+
+        if (!fileName) return null;
+
+        const isHomePage = fileName === "index";
+
+        return {
+            href: isHomePage ? baseUrl : `${baseUrl}${fileName}`,
+            label: isHomePage
+                ? "Home"
+                : fileName
+                      .replace(/[-_]/g, " ")
+                      .replace(/\b\w/g, (letter) => letter.toUpperCase()),
+        };
+    })
+    .filter((item): item is { href: string; label: string } => item !== null)
+    .sort((first, second) => first.href.localeCompare(second.href));
 ---
 
-<nav>
+<header>
     <h1><a href="/">n1clude</a></h1>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <!-- <li><a href="/blog">Blog</a></li>
-        <li><a href="/gallery">Gallery</a></li> -->
-        <li><a href="/contact">Contact</a></li>
-    </ul>
-    <div class="break"></div>
-</nav>
+    <nav>
+        <ul>
+            {
+                navigationItems.map(({ href, label }) => (
+                    <li>
+                        <a href={href}>{label}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+    <DHBar />
+</header>
 
 <style>
-    nav {
+    header {
         font-family: "Cascadia Mono", monospace;
         margin-bottom: 16px;
-    }
-
-    .break {
-        width: 100%; /* Adjust length as needed */
-        height: 0; /* Prevents the div from occupying vertical content space */
-        border-top: 2px dashed #000; /* Thickness, style, and color */
-        margin: 20px 0; /* Vertical spacing around the line */
     }
 
     h1 {

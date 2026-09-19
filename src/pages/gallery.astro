@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Prompt from "../components/Prompt.astro";
+import Document from "../components/Document.astro";
+---
+
+<Layout>
+    <Prompt>cat gallery.md</Prompt>
+    <Document>
+        <p>Sorry! This is currently work in progress.</p>
+    </Document>
+    <Prompt blinking_cursor />
+</Layout>
