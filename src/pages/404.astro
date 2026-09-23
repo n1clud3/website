@@ -3,8 +3,10 @@ import Layout from "../layouts/Layout.astro";
 import Prompt from "../components/Prompt.astro";
 ---
 
-<Layout>
+<Layout subtitle="404">
     <Prompt blinking_cursor
-        >cat error.md<br /><br />Sorry! The requested page was not found.</Prompt
+        >cat error.txt<br /><br />Sorry! The requested page was not found. <a
+            href="/">Click to return to index.</a
+        >&nbsp;</Prompt
     >
 </Layout>
