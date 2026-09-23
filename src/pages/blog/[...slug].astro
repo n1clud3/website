@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Document from "../../components/Document.astro";
+import Prompt from "../../components/Prompt.astro";
+import { formatDate } from "../../utils/datetime.ts";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+
+    return posts.map((post) => ({
+        params: {
+            slug: post.id,
+        },
+        props: {
+            post,
+        },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout subtitle="blog">
+    <Prompt>cat /blog/{post.id}.md</Prompt>
+    <Document>
+        <p class="fineprint">
+            Posted by {post.data.author} on {formatDate(post.data.pubDate)}
+        </p>
+        <Content />
+    </Document>
+    <Prompt blinking_cursor />
+</Layout>
+
+<style>
+    .fineprint {
+        font-size: 0.75em;
+        color: var(--text-color-secondary);
+    }
+</style>

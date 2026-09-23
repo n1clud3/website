@@ -29,10 +29,21 @@ const navigationItems = Object.keys(pageFiles)
     })
     .filter((item): item is { href: string; label: string } => item !== null)
     .sort((first, second) => first.href.localeCompare(second.href));
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+}
+const { title = "n1clude", subtitle } = Astro.props;
 ---
 
 <header>
-    <h1><img src="/favicon-32x32.png" /><a href="/">n1clude</a></h1>
+    <h1>
+        <img src="/favicon-32x32.png" alt="Website icon" /><a href="/"
+            >{title}</a
+        >{subtitle && <span class="subtitle"> / {subtitle}</span>}
+    </h1>
+
     <nav>
         <ul>
             {
@@ -62,6 +73,11 @@ const navigationItems = Object.keys(pageFiles)
         margin-right: 4px;
     }
 
+    .subtitle {
+        font-size: 0.5em;
+        color: var(--text-color-secondary);
+    }
+
     ul {
         list-style: none;
         margin: 0;
@@ -71,19 +87,5 @@ const navigationItems = Object.keys(pageFiles)
         flex-direction: row;
         justify-content: start;
         gap: 16px;
-    }
-
-    a {
-        color: var(--text-color);
-        text-decoration: none;
-        padding: 2px;
-
-        transition: color var(--button-transition-speed) linear;
-        transition: background-color var(--button-transition-speed) linear;
-    }
-
-    a:hover {
-        color: var(--background-color);
-        background-color: var(--text-color);
     }
 </style>

@@ -5,8 +5,9 @@ import "../styles/global.css";
 
 interface Props {
     title?: string;
+    subtitle?: string;
 }
-const { title = "n1clude" } = Astro.props;
+const { title = "n1clude", subtitle } = Astro.props;
 ---
 
 <html lang="en">
@@ -31,10 +32,10 @@ const { title = "n1clude" } = Astro.props;
         />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
+        <title>{title} {subtitle && `/ ${subtitle}`}</title>
     </head>
     <body>
-        <Header />
+        <Header title={title} subtitle={subtitle} />
         <main>
             <slot />
         </main>

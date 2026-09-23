@@ -20,3 +20,34 @@
         --text-color-secondary: #bfbfbf;
     }
 }
+
+p {
+    text-align: justify;
+}
+
+code {
+    font-family: 'Cascadia Mono', monospace;
+    padding: 0.08em 0.33em;
+    color: var(--text-color);
+    background-color: var(--background-backdrop);
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+
+    transition: color var(--button-transition-speed) linear;
+    transition: background-color var(--button-transition-speed) linear;
+}
+
+a:hover {
+    color: var(--background-color);
+    background-color: var(--text-color);
+}
+
+article img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto;
+}
