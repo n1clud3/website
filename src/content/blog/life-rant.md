@@ -44,7 +44,7 @@ For now, check out these faction banners I've designed myself!
 
 ![HL2 Combine faction banner](/blog/mse/combine_mono.png)
 
-![HL2 Resistance faction banner](/blog/mse/rebels_mono.png)
+![HL2 Resistance faction banner](/blog/mse/resistance_mono.png)
 
 I was thinking of adding some call-to-action to these posters but everything
 that came into my head was sounding mega cringe so I forfeited that idea.
