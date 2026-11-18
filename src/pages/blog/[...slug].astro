@@ -26,7 +26,7 @@ const { Content } = await render(post);
     <Prompt>cat /blog/{post.id}.md</Prompt>
     <Document>
         <p class="fineprint">
-            Posted by {post.data.author} on {formatDate(post.data.pubDate)}
+            Posted on {formatDate(post.data.pubDate)}
         </p>
         <Content />
     </Document>
