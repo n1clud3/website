@@ -1,7 +1,7 @@
 ---
 title: "Hello, world!"
 description: "The first article on my blog."
-pubDate: 2026-09-23T17:59
+pubDate: 2026-09-23T17:59+02:00
 author: "n1clude"
 heroImage: "/favicon-192x192.png"
 ---

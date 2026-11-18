@@ -1,11 +1,21 @@
+const formatter = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Europe/Bratislava",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hourCycle: "h23",
+});
+
 /**
  * Returns a string of properly formatted date and time.
- * @param date The date to format.
- * @returns A string of properly formatted date and time.
+ * @param datetime The date to format.
+ * @returns A string formatted as `YYYY-MM-DD HH:mm`.
  */
 export function formatDate(datetime: Date) {
-    const date = `${datetime.getFullYear()}-${datetime.getMonth().toString().padStart(2, "0")}-${datetime.getDay().toString().padStart(2, "0")}`;
-    const time = `${datetime.getHours()}:${datetime.getMinutes().toString().padStart(2, "0")}`;
-    const dt = date + " " + time;
-    return dt;
+  const parts = Object.fromEntries(
+    formatter.formatToParts(datetime).map((p) => [p.type, p.value]),
+  );
+  return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute}`;
 }

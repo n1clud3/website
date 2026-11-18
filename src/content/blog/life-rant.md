@@ -1,7 +1,7 @@
 ---
 title: "This site, recent life and game dev"
 description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-pubDate: 2026-10-26T21:04
+pubDate: 2026-10-26T21:04+01:00
 author: "n1clude"
 heroImage: "/blog/miku.jpg"
 ---
