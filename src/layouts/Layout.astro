@@ -6,11 +6,13 @@ import "../styles/global.css";
 interface Props {
     title?: string;
     subtitle?: string;
-    /** Extra breadcrumb segment shown only in the browser tab title. */
+    /** Extra breadcrumb segment after the subtitle, e.g. a post slug. */
     page?: string;
+    /** Human-readable name for `page` used in the browser tab; defaults to `page`. */
+    pageTitle?: string;
 }
-const { title = "n1clude", subtitle, page } = Astro.props;
-const documentTitle = [title, subtitle, page].filter(Boolean).join(" / ");
+const { title = "n1clude", subtitle, page, pageTitle = page } = Astro.props;
+const documentTitle = [title, subtitle, pageTitle].filter(Boolean).join(" / ");
 ---
 
 <html lang="en">
@@ -38,7 +40,7 @@ const documentTitle = [title, subtitle, page].filter(Boolean).join(" / ");
         <title>{documentTitle}</title>
     </head>
     <body>
-        <Header title={title} subtitle={subtitle} />
+        <Header title={title} subtitle={subtitle} page={page} />
         <main>
             <slot />
         </main>

@@ -33,15 +33,17 @@ const navigationItems = Object.keys(pageFiles)
 interface Props {
     title?: string;
     subtitle?: string;
+    page?: string;
 }
-const { title = "n1clude", subtitle } = Astro.props;
+const { title = "n1clude", subtitle, page } = Astro.props;
+const trail = [subtitle, page].filter(Boolean).join(" / ");
 ---
 
 <header>
     <h1>
         <img src="/favicon-32x32.png" alt="Website icon" /><a href="/"
             >{title}</a
-        >{subtitle && <span class="subtitle"> / {subtitle}</span>}
+        >{trail && <span class="subtitle"> / {trail}</span>}
     </h1>
 
     <nav>
@@ -76,6 +78,7 @@ const { title = "n1clude", subtitle } = Astro.props;
     .subtitle {
         font-size: 0.5em;
         color: var(--text-color-secondary);
+        overflow-wrap: anywhere;
     }
 
     ul {
