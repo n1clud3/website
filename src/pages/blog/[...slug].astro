@@ -22,7 +22,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout subtitle="blog">
+<Layout subtitle="blog" page={post.id}>
     <Prompt>cat /blog/{post.id}.md</Prompt>
     <Document>
         <p class="fineprint">

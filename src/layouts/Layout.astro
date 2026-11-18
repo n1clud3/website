@@ -6,8 +6,11 @@ import "../styles/global.css";
 interface Props {
     title?: string;
     subtitle?: string;
+    /** Extra breadcrumb segment shown only in the browser tab title. */
+    page?: string;
 }
-const { title = "n1clude", subtitle } = Astro.props;
+const { title = "n1clude", subtitle, page } = Astro.props;
+const documentTitle = [title, subtitle, page].filter(Boolean).join(" / ");
 ---
 
 <html lang="en">
@@ -32,7 +35,7 @@ const { title = "n1clude", subtitle } = Astro.props;
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
-        <title>{title} {subtitle && `/ ${subtitle}`}</title>
+        <title>{documentTitle}</title>
     </head>
     <body>
         <Header title={title} subtitle={subtitle} />
